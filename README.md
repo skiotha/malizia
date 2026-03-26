@@ -19,12 +19,12 @@ Copy the example env file and fill in your credentials:
 cp config/malizia.development.example.env config/malizia.development.env
 ```
 
-| Variable            | Where to find it                                                        |
-| ------------------- | ----------------------------------------------------------------------- |
-| `DISCORD_TOKEN`     | Developer Portal → Bot → Reset Token                                    |
-| `DISCORD_CLIENT_ID` | Developer Portal → General Information → Application ID                 |
-| `DISCORD_GUILD_ID`  | Right-click your server in Discord (Developer Mode must be on)          |
-| `API_BASE_URL`      | URL of your Nagara RPG web-server (defaults to `http://localhost:3000`) |
+| Variable            | Where to find it                                               |
+| ------------------- | -------------------------------------------------------------- |
+| `DISCORD_TOKEN`     | Developer Portal → Bot → Reset Token                           |
+| `DISCORD_CLIENT_ID` | Developer Portal → General Information → Application ID        |
+| `DISCORD_GUILD_ID`  | Right-click your server in Discord (Developer Mode must be on) |
+| `API_BASE_URL`      | URL of your web-server (defaults to `http://localhost:3000`)   |
 
 ## Development (local)
 
