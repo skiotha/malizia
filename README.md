@@ -1,2 +1,3 @@
 # malizia
-Utility bot for my Nagara RPG system: dice rolling, character references, and rules/world lookups
+
+Utility bot for my RPG systems: dice rolling, character references, and rules/world lookups
