@@ -1,4 +1,16 @@
-export function parseDice(expression: string): DiceGroup[] {
+export type CheckOperator = "<" | "<=" | ">" | ">=";
+
+export interface Check {
+  operator: CheckOperator;
+  threshold: number;
+}
+
+export interface ParsedExpression {
+  groups: DiceGroup[];
+  check?: Check;
+}
+
+export function parseDice(expression: string): ParsedExpression {
   const dicePattern = /(\d*)d(\d+)([+-]\d+)?/g;
   const groups: DiceGroup[] = [];
   let match;
@@ -12,7 +24,16 @@ export function parseDice(expression: string): DiceGroup[] {
     });
   }
 
-  return groups;
+  let check: Check | undefined;
+  const checkMatch = expression.match(/(<=|>=|<|>)\s*(\d+)\s*$/);
+  if (checkMatch) {
+    check = {
+      operator: checkMatch[1]! as CheckOperator,
+      threshold: parseInt(checkMatch[2]!),
+    };
+  }
+
+  return { groups, check };
 }
 
 export function rollDice(group: DiceGroup): RollResult {

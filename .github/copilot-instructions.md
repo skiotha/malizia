@@ -25,7 +25,7 @@ npm test             # run tests with node:test
 - **`src/lib/rest.mts`** — `DiscordRest` class; thin `fetch` wrapper for Discord REST API with `Bot` token auth
 - **`src/lib/api.mts`** — `apiGet()` helper for querying the external Nagara RPG web-server
 - **`src/lib/types.mts`** — `Command`, `CommandContext`, `Interaction`, and related interfaces
-- **`src/lib/dice.mts`** — dice parsing and rolling helpers (`parseDice`, `rollDice`, `DiceGroup`)
+- **`src/lib/dice.mts`** — dice parsing and rolling helpers (`parseDice`, `rollDice`, `DiceGroup`, `RollResult`, `Check`, `CheckOperator`, `ParsedExpression`)
 - **`src/lib/constants.mts`** — shared constants (Discord API version, base URLs)
 - **`src/commands/`** — one file per command, each exporting a `Command` (data + execute); registered in `index.mts`
 - **`src/events/`** — event handlers dispatched by the gateway; registered in `index.mts`
