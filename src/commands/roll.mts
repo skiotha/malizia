@@ -1,3 +1,4 @@
+import { parseDice, rollDice } from "#dice";
 import { OptionType, type Command } from "#types";
 
 export const roll: Command = {
@@ -8,15 +9,27 @@ export const roll: Command = {
       {
         type: OptionType.String,
         name: "expression",
-        description: "Dice expression (e.g. 2d6+3)",
-        required: true,
+        description: "Dice expression, e.g. 2d6+3 (defaults to 1d20)",
+        required: false,
       },
     ],
   },
 
   async execute(ctx) {
-    const expression = ctx.options.get("expression") as string;
-    // TODO: implement dice parsing and rolling
-    await ctx.reply(`Rolling: ${expression}`);
+    const expression =
+      (ctx.options.get("expression") as string | undefined) ?? "1d20";
+
+    const dice = parseDice(expression);
+
+    if (dice.length === 0) {
+      await ctx.reply(
+        `Invalid dice expression: \`${expression}\`. Expected format: \`NdS+M\` (e.g. \`2d6+3\`, \`d20\`)`,
+        { ephemeral: true },
+      );
+      return;
+    }
+
+    const results = dice.map(rollDice);
+    await ctx.reply(`Rolling: ${expression}\nResult: ${results.join(", ")}`);
   },
 };

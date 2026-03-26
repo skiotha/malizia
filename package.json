@@ -22,7 +22,8 @@
     "#types": "./src/lib/types.mts",
     "#gateway": "./src/lib/gateway.mts",
     "#rest": "./src/lib/rest.mts",
-    "#constants": "./src/lib/constants.mts"
+    "#constants": "./src/lib/constants.mts",
+    "#dice": "./src/lib/dice.mts"
   },
   "license": "MIT",
   "author": "ahani",
@@ -32,7 +33,8 @@
     "start:dev": "node --env-file-if-exists=config/malizia.development.env --watch src/index.mts",
     "deploy": "node --env-file-if-exists=config/malizia.env src/deploy.mts",
     "deploy:dev": "node --env-file-if-exists=config/malizia.development.env src/deploy.mts",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node --experimental-strip-types --test test/**/*.test.mts"
   },
   "engines": {
     "node": ">=24.0.0"
