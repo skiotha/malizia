@@ -1,9 +1,3 @@
-export interface DiceGroup {
-  count: number;
-  sides: number;
-  modifier: number;
-}
-
 export function parseDice(expression: string): DiceGroup[] {
   const dicePattern = /(\d*)d(\d+)([+-]\d+)?/g;
   const groups: DiceGroup[] = [];
@@ -21,10 +15,23 @@ export function parseDice(expression: string): DiceGroup[] {
   return groups;
 }
 
-export function rollDice(group: DiceGroup): number {
-  let total = 0;
+export function rollDice(group: DiceGroup): RollResult {
+  const rolls: number[] = [];
   for (let i = 0; i < group.count; i++) {
-    total += Math.floor(Math.random() * group.sides) + 1;
+    rolls.push(Math.floor(Math.random() * group.sides) + 1);
   }
-  return total + group.modifier;
+  const total = rolls.reduce((sum, r) => sum + r, 0) + group.modifier;
+  return { rolls, modifier: group.modifier, total };
+}
+
+export interface DiceGroup {
+  count: number;
+  sides: number;
+  modifier: number;
+}
+
+export interface RollResult {
+  rolls: number[];
+  modifier: number;
+  total: number;
 }

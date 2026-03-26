@@ -1,5 +1,12 @@
-import { parseDice, rollDice } from "#dice";
+import { parseDice, rollDice, type RollResult } from "#dice";
 import { OptionType, type Command } from "#types";
+
+function formatRoll(result: RollResult): string {
+  const parts = result.rolls.map(String);
+  if (result.modifier > 0) parts.push(`*${result.modifier}*`);
+  else if (result.modifier < 0) parts.push(String(result.modifier));
+  return parts.join(" + ");
+}
 
 export const roll: Command = {
   data: {
@@ -30,6 +37,12 @@ export const roll: Command = {
     }
 
     const results = dice.map(rollDice);
-    await ctx.reply(`Rolling: ${expression}\nResult: ${results.join(", ")}`);
+
+    const breakdowns = results.map(formatRoll);
+    const totals = results.map((r) => r.total);
+
+    await ctx.reply(
+      `Rolling **${expression}:** ${breakdowns.join("; ")}\n**Result:** ${totals.join(", ")}`,
+    );
   },
 };

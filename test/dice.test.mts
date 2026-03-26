@@ -45,28 +45,33 @@ describe("rollDice", () => {
     const group = { count: 1, sides: 6, modifier: 0 };
     for (let i = 0; i < 100; i++) {
       const result = rollDice(group);
-      assert.ok(result >= 1 && result <= 6, `Got ${result}, expected 1-6`);
+      assert.ok(
+        result.total >= 1 && result.total <= 6,
+        `Got ${result.total}, expected 1-6`,
+      );
+      assert.strictEqual(result.rolls.length, 1);
+      assert.strictEqual(result.modifier, 0);
     }
   });
 
   it("applies positive modifier", () => {
     mock.method(Math, "random", () => 0); // always rolls 1
     const result = rollDice({ count: 1, sides: 6, modifier: 3 });
-    assert.strictEqual(result, 4); // 1 + 3
+    assert.deepStrictEqual(result, { rolls: [1], modifier: 3, total: 4 }); // 1 + 3
     mock.restoreAll();
   });
 
   it("applies negative modifier", () => {
     mock.method(Math, "random", () => 0.999); // always rolls max
     const result = rollDice({ count: 1, sides: 6, modifier: -2 });
-    assert.strictEqual(result, 4); // 6 - 2
+    assert.deepStrictEqual(result, { rolls: [6], modifier: -2, total: 4 }); // 6 - 2
     mock.restoreAll();
   });
 
   it("sums multiple dice", () => {
     mock.method(Math, "random", () => 0.5); // rolls 4 on a d6
     const result = rollDice({ count: 3, sides: 6, modifier: 0 });
-    assert.strictEqual(result, 12); // 4 + 4 + 4
+    assert.deepStrictEqual(result, { rolls: [4, 4, 4], modifier: 0, total: 12 }); // 4 + 4 + 4
     mock.restoreAll();
   });
 });

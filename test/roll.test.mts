@@ -26,7 +26,7 @@ describe("roll command", () => {
 
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
     assert.strictEqual(reply.mock.calls.length, 1);
-    assert.match(reply.mock.calls[0].arguments[0] as string, /Rolling: 1d20/);
+    assert.match(reply.mock.calls[0].arguments[0] as string, /\*\*Rolling\*\* 1d20/);
     mock.restoreAll();
   });
 
@@ -37,8 +37,9 @@ describe("roll command", () => {
 
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
     assert.strictEqual(reply.mock.calls.length, 1);
-    assert.match(reply.mock.calls[0].arguments[0] as string, /Rolling: 2d6\+1/);
-    assert.match(reply.mock.calls[0].arguments[0] as string, /Result: 3/); // 1+1+1
+    assert.match(reply.mock.calls[0].arguments[0] as string, /\*\*Rolling\*\* 2d6\+1/);
+    assert.match(reply.mock.calls[0].arguments[0] as string, /1 \+ 1 \+ \+1/); // breakdown
+    assert.match(reply.mock.calls[0].arguments[0] as string, /\*\*Result:\*\* 3/); // 1+1+1
     mock.restoreAll();
   });
 
