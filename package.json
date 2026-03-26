@@ -1,0 +1,43 @@
+{
+  "name": "malizia",
+  "version": "0.0.1",
+  "description": "Utility bot for my Nagara RPG system: dice rolling, character references, and rules/world lookups",
+  "keywords": [
+    "malizia",
+    "discord",
+    "nagara"
+  ],
+  "homepage": "https://github.com/skiotha/malizia#readme",
+  "bugs": {
+    "url": "https://github.com/skiotha/malizia/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skiotha/malizia.git"
+  },
+  "imports": {
+    "#commands": "./src/commands/index.mts",
+    "#events": "./src/events/index.mts",
+    "#api": "./src/lib/api.mts",
+    "#types": "./src/lib/types.mts",
+    "#gateway": "./src/lib/gateway.mts",
+    "#rest": "./src/lib/rest.mts",
+    "#constants": "./src/lib/constants.mts"
+  },
+  "license": "MIT",
+  "author": "ahani",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=config/malizia.env src/index.mts",
+    "start:dev": "node --env-file-if-exists=config/malizia.development.env --watch src/index.mts",
+    "deploy": "node --env-file-if-exists=config/malizia.env src/deploy.mts",
+    "deploy:dev": "node --env-file-if-exists=config/malizia.development.env src/deploy.mts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0"
+  }
+}
