@@ -16,3 +16,4 @@ config/*.env
 
 src/temp/*.json
 src/data/*.json
+!src/data/abilities.lookup.json

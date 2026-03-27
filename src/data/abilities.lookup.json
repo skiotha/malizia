@@ -1,0 +1,929 @@
+[
+  {
+    "id": "akrobatika",
+    "name": "Акробатика",
+    "category": "ability",
+    "description": "Подвижность, маневренность и гимнастические приемы для перемещения в бою и обхода противников.",
+    "tags": [
+      "mobility",
+      "defense",
+      "melee",
+      "positioning"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "dym-i-zerkala",
+    "name": "Дым и Зеркала",
+    "category": "ability",
+    "description": "Техника боя коротким и точным оружием, основанная на скорости рук, обмане и внезапности.",
+    "tags": [
+      "finesse",
+      "short-weapon",
+      "attack",
+      "defense",
+      "advantage"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "intrigi",
+    "name": "Интриги",
+    "category": "ability",
+    "description": "Дворцовая боевая техника, использующая слабости противника, внезапность и удары в спину.",
+    "tags": [
+      "stealth",
+      "advantage",
+      "assassination",
+      "damage",
+      "status",
+      "finesse"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "ulichnyy-boy",
+    "name": "Уличный Бой",
+    "category": "ability",
+    "description": "Грубые и жесткие приемы ближнего боя для оглушения, опрокидывания и контратак.",
+    "tags": [
+      "melee",
+      "control",
+      "stun",
+      "knockdown",
+      "counterattack",
+      "armor-piercing"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "vladenie-nozhami",
+    "name": "Владение Ножами",
+    "category": "ability",
+    "description": "Специализация на коротком режуще-колющем оружии с упором на скорость и бой вплотную.",
+    "tags": [
+      "short-weapon",
+      "melee",
+      "attack",
+      "dueling",
+      "control"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "opportunizm",
+    "name": "Оппортунизм",
+    "category": "ability",
+    "description": "Жесткая школа ближнего боя, превращающая свободные атаки в особенно опасный инструмент давления.",
+    "tags": [
+      "melee",
+      "free-attack",
+      "reaction",
+      "control"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "bystrye-refleksy",
+    "name": "Быстрые Рефлексы",
+    "category": "ability",
+    "description": "Предельная реакция и выживаемость, позволяющие смягчать опасные удары и постоянно опережать противника.",
+    "tags": [
+      "survival",
+      "initiative",
+      "reaction",
+      "positioning",
+      "defense"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "bystraya-ruka",
+    "name": "Быстрая Рука",
+    "category": "ability",
+    "description": "Искусство молниеносно доставать, менять и обслуживать оружие прямо в движении.",
+    "tags": [
+      "weapons",
+      "reload",
+      "mobility",
+      "utility",
+      "firearms"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "alkhimiya",
+    "name": "Алхимия",
+    "category": "ability",
+    "description": "Зельеварение и поиск реагентов для эликсиров, масел, гранат и особых боеприпасов.",
+    "tags": [
+      "crafting",
+      "alchemy",
+      "grenades",
+      "ammunition"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "otravitel",
+    "name": "Отравитель",
+    "category": "ability",
+    "description": "Знание ядов и способов надежно нанести их через оружие или скрытое приспособление.",
+    "tags": [
+      "poison",
+      "weapons",
+      "status",
+      "alchemy",
+      "assassination"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "udushenie",
+    "name": "Удушение",
+    "category": "ability",
+    "description": "Тихое устранение гарротой и удушающими алхимическими средствами.",
+    "tags": [
+      "stealth",
+      "grapple",
+      "poison",
+      "armor-piercing"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "masla",
+    "name": "Масла",
+    "category": "ability",
+    "description": "Умение извлекать из нательных масел максимум защиты и полезных вторичных эффектов.",
+    "tags": [
+      "alchemy",
+      "armor",
+      "protection",
+      "utility"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "trapperstvo",
+    "name": "Трапперство",
+    "category": "ability",
+    "description": "Работа с механическими и алхимическими ловушками, включая их полевое создание и обезвреживание.",
+    "tags": [
+      "traps",
+      "crafting",
+      "control",
+      "utility",
+      "alchemy"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "zhivotnyy-mir",
+    "name": "Животный Мир",
+    "category": "ability",
+    "description": "Следопытское и биологическое знание о людях, зверях и чудовищах.",
+    "tags": [
+      "knowledge",
+      "tracking",
+      "damage",
+      "support"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "taktika",
+    "name": "Тактика",
+    "category": "ability",
+    "description": "Боевой расчет, заменяющий скорость и меткость холодным пониманием ситуации.",
+    "tags": [
+      "utility",
+      "attribute-swap",
+      "initiative",
+      "defense",
+      "weapons"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "medik",
+    "name": "Медик",
+    "category": "ability",
+    "description": "Полевая медицина, хирургия и знание тела как в лечении, так и в причинении вреда.",
+    "tags": [
+      "healing",
+      "support",
+      "knowledge",
+      "damage"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "erudit",
+    "name": "Эрудит",
+    "category": "ability",
+    "description": "Знание языков, истории и артефактов, которое помогает понимать и использовать наследие мира.",
+    "tags": [
+      "knowledge",
+      "artifacts",
+      "magic",
+      "utility"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "morskoe-voennoe-delo-i-artilleriya",
+    "name": "Морское Военное Дело и Артиллерия",
+    "category": "ability",
+    "description": "Эксплуатация и организация пушек, осадных машин и алхимического военного снаряжения.",
+    "tags": [
+      "artillery",
+      "utility",
+      "crafting",
+      "grenades"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "kuznets",
+    "name": "Кузнец",
+    "category": "ability",
+    "description": "Изготовление, починка и модификация оружия, брони и боеприпасов.",
+    "tags": [
+      "crafting",
+      "weapons",
+      "armor",
+      "equipment"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "isklyuchitelnyy-atribut",
+    "name": "Исключительный Атрибут",
+    "category": "ability",
+    "description": "Длительная тренировка, пробивающая обычный предел одного выбранного атрибута.",
+    "tags": [
+      "attribute-swap",
+      "advancement",
+      "scaling"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "shestoe-chuvstvo",
+    "name": "Шестое Чувство",
+    "category": "ability",
+    "description": "Интуитивная стрельба и ориентация без надежды на обычное зрение.",
+    "tags": [
+      "ranged",
+      "perception",
+      "attribute-swap",
+      "initiative"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "vorozhba",
+    "name": "Ворожба",
+    "category": "ability",
+    "description": "Третий глаз, позволяющий видеть Тени, скрытую магию и подлинную природу вещей.",
+    "tags": [
+      "magic",
+      "perception",
+      "shadows",
+      "corruption"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "strelba",
+    "name": "Стрельба",
+    "category": "ability",
+    "description": "Чистая специализация на уроне и пробивной силе оружия дальнего боя.",
+    "tags": [
+      "ranged",
+      "damage",
+      "firearms",
+      "bows",
+      "armor-piercing"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "instinkt-okhotnika",
+    "name": "Инстинкт Охотника",
+    "category": "ability",
+    "description": "Специализация на одной добыче, которая почти лишается шанса уйти живой.",
+    "tags": [
+      "ranged",
+      "tracking",
+      "reaction",
+      "damage"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "stychka",
+    "name": "Стычка",
+    "category": "ability",
+    "description": "Искусство делать дальнобойное оружие опасным даже вплотную.",
+    "tags": [
+      "ranged",
+      "melee",
+      "reaction",
+      "counterattack",
+      "weapons"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "tryukovaya-strelba",
+    "name": "Трюковая Стрельба",
+    "category": "ability",
+    "description": "Точный контроль над выстрелом ради обезоруживания, ослепления и других эффектных приемов.",
+    "tags": [
+      "ranged",
+      "control",
+      "reaction",
+      "utility"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "zagraditelnyy-ogon",
+    "name": "Заградительный Огонь",
+    "category": "ability",
+    "description": "Техника выпуска множества стрел или выстрелов за один ход.",
+    "tags": [
+      "ranged",
+      "multiattack",
+      "bows",
+      "firearms",
+      "reload"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "stalnoy-brosok",
+    "name": "Стальной Бросок",
+    "category": "ability",
+    "description": "Мастерство метательного оружия и превращения почти любого предмета в снаряд.",
+    "tags": [
+      "thrown",
+      "multiattack",
+      "damage",
+      "weapons",
+      "flexibility"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "tanets-s-plashchom",
+    "name": "Танец с Плащом",
+    "category": "ability",
+    "description": "Дуэльная техника использования плаща или другой ткани как активного оборонительного инструмента.",
+    "tags": [
+      "defense",
+      "cloak",
+      "control",
+      "free-attack",
+      "dueling"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "blagoslovennyy-mechnik",
+    "name": "Благословенный Мечник",
+    "category": "ability",
+    "description": "Высшая техника владения сбалансированным мечом с упором на контратаки и чистую дуэль.",
+    "tags": [
+      "weapons",
+      "dueling",
+      "free-attack",
+      "counterattack"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "na-vershine",
+    "name": "На вершине",
+    "category": "ability",
+    "description": "Техника боевых каблуков, совмещающая удары ногами и руками в один ритм.",
+    "tags": [
+      "equipment",
+      "melee",
+      "free-attack",
+      "weapons",
+      "dueling"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "oputyvanie",
+    "name": "Опутывание",
+    "category": "ability",
+    "description": "Владение сетями, боласами, кнутами и прочим оружием, которое сначала связывает, а потом душит.",
+    "tags": [
+      "entangling",
+      "control",
+      "knockdown",
+      "armor-piercing"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "masterstvo-vladeniya-sostavnym-oruzhiem",
+    "name": "Мастерство Владения Составным Оружием",
+    "category": "ability",
+    "description": "Искусство обращения с цепами, цепными мечами и другим составным оружием.",
+    "tags": [
+      "weapons",
+      "entangling",
+      "multiattack",
+      "damage",
+      "reach"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "risunki-toporami",
+    "name": "Рисунки Топорами",
+    "category": "ability",
+    "description": "Специализация на топорах, сочетающая оглушающие размены и мощные рубящие удары.",
+    "tags": [
+      "weapons",
+      "melee",
+      "multiattack",
+      "stun",
+      "damage"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "drevkovoe-oruzhie",
+    "name": "Древковое Оружие",
+    "category": "ability",
+    "description": "Классическое мастерство длинного оружия, контролирующего дистанцию и движение врага.",
+    "tags": [
+      "polearm",
+      "reach",
+      "control",
+      "free-attack",
+      "melee"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "vladenie-posokhami",
+    "name": "Владение Посохами",
+    "category": "ability",
+    "description": "Подвид мастерства длинного оружия, делающий посох одновременно защитой, рычагом и ударным инструментом.",
+    "tags": [
+      "polearm",
+      "defense",
+      "free-attack",
+      "knockdown"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "dvoynoy-udar",
+    "name": "Двойной Удар",
+    "category": "ability",
+    "description": "Боевой стиль с двумя клинками или иными оружиями в обеих руках.",
+    "tags": [
+      "off-hand",
+      "multiattack",
+      "melee",
+      "defense"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "zheleznoe-telo",
+    "name": "Железное Тело",
+    "category": "ability",
+    "description": "Грубая физическая мощь, заменяющая точность и повышающая урон в ближнем бою.",
+    "tags": [
+      "strength",
+      "melee",
+      "attribute-swap",
+      "damage"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "begemot",
+    "name": "Бегемот",
+    "category": "ability",
+    "description": "Специализация на тяжелом двуручном оружии и его инерции.",
+    "tags": [
+      "weapons",
+      "damage",
+      "armor-piercing"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "shchity",
+    "name": "Щиты",
+    "category": "ability",
+    "description": "Боевой стиль, в котором щит становится не только защитой, но и ударным оружием.",
+    "tags": [
+      "shield",
+      "defense",
+      "melee",
+      "knockdown",
+      "off-hand"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "nevooruzhennyy-boy",
+    "name": "Невооруженный Бой",
+    "category": "ability",
+    "description": "Полноценное боевое искусство голыми руками, когтями и любым натуральным оружием тела.",
+    "tags": [
+      "weapons",
+      "multiattack",
+      "damage",
+      "melee"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "borba",
+    "name": "Борьба",
+    "category": "ability",
+    "description": "Контроль тела противника через захваты, броски и удушающие удержания без всякой магии.",
+    "tags": [
+      "grapple",
+      "thrown",
+      "control",
+      "reaction",
+      "armor-piercing"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "yarost",
+    "name": "Ярость",
+    "category": "ability",
+    "description": "Осознанная боевая злость, которая жертвует защитой ради разрушительной ближней атаки.",
+    "tags": [
+      "melee",
+      "damage",
+      "defense"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "vosstanovlenie",
+    "name": "Восстановление",
+    "category": "ability",
+    "description": "Медитативное самолечение, позволяющее быстро поднимать себя на ноги даже в бою.",
+    "tags": [
+      "healing",
+      "will",
+      "reaction",
+      "survival"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "podvig-sily",
+    "name": "Подвиг Силы",
+    "category": "ability",
+    "description": "Героическая мощь, делающая тело выносливее и опаснее без всякой магической цены.",
+    "tags": [
+      "strength",
+      "survival",
+      "damage",
+      "conditional"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "telokhranitel",
+    "name": "Телохранитель",
+    "category": "ability",
+    "description": "Искусство закрывать союзников собой и немедленно карать тех, кто поднимает на них руку.",
+    "tags": [
+      "protection",
+      "support",
+      "reaction",
+      "defense",
+      "counterattack"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "soldat",
+    "name": "Солдат",
+    "category": "ability",
+    "description": "Профессиональное владение броней, превращающее ее во вторую кожу и мистическую опору.",
+    "tags": [
+      "armor",
+      "defense",
+      "mobility",
+      "magic",
+      "equipment"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "stoykost",
+    "name": "Стойкость",
+    "category": "ability",
+    "description": "Ментальная дисциплина и воля, защищающие от ограничений и отражающие слабые психические удары.",
+    "tags": [
+      "resistance",
+      "will",
+      "strength",
+      "mental",
+      "reaction"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskie-sily",
+    "name": "Мистические Силы",
+    "category": "ability",
+    "description": "Базовая способность владеть заклинаниями, которые повышают постоянную и временную Порочность.",
+    "tags": [
+      "magic",
+      "spellcasting",
+      "corruption",
+      "tradition"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskaya-traditsiya-orden",
+    "name": "Мистическая Традиция: Орден",
+    "category": "ability",
+    "description": "Академическая традиция Ордена, снижающая цену изучения и применения собственных заклинаний.",
+    "tags": [
+      "magic",
+      "tradition",
+      "mystical-tradition",
+      "mental"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskaya-traditsiya-krug-vedm",
+    "name": "Мистическая Традиция: Круг Ведьм",
+    "category": "ability",
+    "description": "Дикая ведьмовская традиция, снижающая Порочность своих проклятий, природной магии и ритуалов.",
+    "tags": [
+      "magic",
+      "tradition",
+      "mystical-tradition",
+      "curse"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskaya-traditsiya-teurgiya",
+    "name": "Мистическая Традиция: Теургия",
+    "category": "ability",
+    "description": "Церковная традиция Аполеаты, снижающая цену исцеляющей и защитной магии и усиливающая ее против чудовищ.",
+    "tags": [
+      "magic",
+      "tradition",
+      "church",
+      "healing",
+      "protection",
+      "mystical-tradition"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskaya-traditsiya-ratassan",
+    "name": "Мистическая Традиция: Ратассан",
+    "category": "ability",
+    "description": "Дворцовая лапалийская традиция огненной и боевой магии, снижающая цену собственной школы.",
+    "tags": [
+      "magic",
+      "tradition",
+      "mystical-tradition",
+      "fire"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskaya-traditsiya-koldovstvo",
+    "name": "Мистическая Традиция: Колдовство",
+    "category": "ability",
+    "description": "Колдовская традиция, которая не избегает Порока, а учится использовать его как топливо и оружие.",
+    "tags": [
+      "magic",
+      "tradition",
+      "corruption",
+      "shadows",
+      "mystical-tradition"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskaya-traditsiya-sireny",
+    "name": "Мистическая Традиция: Сирены",
+    "category": "ability",
+    "description": "Песенная традиция подчинения и очарования, делающая магию разума особенно устойчивой.",
+    "tags": [
+      "magic",
+      "tradition",
+      "mystical-tradition",
+      "mental",
+      "mind-control"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskaya-traditsiya-simvolizm",
+    "name": "Мистическая Традиция: Символизм",
+    "category": "ability",
+    "description": "Традиция магических символов, заранее подготавливающая и упаковывающая эффекты без немедленного вреда Тени.",
+    "tags": [
+      "magic",
+      "tradition",
+      "mystical-tradition",
+      "spellcasting",
+      "traps"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "ritualist",
+    "name": "Ритуалист",
+    "category": "ability",
+    "description": "Умение изучать, распознавать и проводить долгие мистические ритуалы разных традиций.",
+    "tags": [
+      "magic",
+      "corruption",
+      "knowledge",
+      "tradition"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "osobyy-dar",
+    "name": "Особый Дар",
+    "category": "ability",
+    "description": "Редкий мистический талант, помогающий безопаснее носить Порок и пользоваться более широкой магией.",
+    "tags": [
+      "magic",
+      "corruption",
+      "spellcasting",
+      "scaling"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "napravlyaemyy-grekh",
+    "name": "Направляемый Грех",
+    "category": "ability",
+    "description": "Манипуляция Порочностью как собственной энергией: перенаправление, усиление и сброс на других.",
+    "tags": [
+      "corruption",
+      "magic",
+      "utility",
+      "will"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "ladoni-demiurga",
+    "name": "Ладони демиурга",
+    "category": "ability",
+    "description": "Навык раскрывать потенциал дорогих мистических ладоней и безопаснее перенаправлять в них Порочность.",
+    "tags": [
+      "magic",
+      "equipment",
+      "corruption",
+      "flexibility"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "runicheskie-tatu",
+    "name": "Рунические Тату",
+    "category": "ability",
+    "description": "Использование нанесенных ритуалом татуировок как скрытого источника защиты, исцеления и урона.",
+    "tags": [
+      "magic",
+      "corruption",
+      "armor",
+      "damage"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "lider",
+    "name": "Лидер",
+    "category": "ability",
+    "description": "Харизматичное командование, превращающее личную волю в силу заклинаний и боевой координации.",
+    "tags": [
+      "leadership",
+      "charisma",
+      "support",
+      "magic"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "dominirovanie",
+    "name": "Доминирование",
+    "category": "ability",
+    "description": "Подавляющее присутствие, которое заставляет врага колебаться, отступать или прекращать бой.",
+    "tags": [
+      "charisma",
+      "control",
+      "melee",
+      "mind-control"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "manevrennyy-boy",
+    "name": "Маневренный Бой",
+    "category": "ability",
+    "description": "Подвижный пиратский стиль боя с постоянной сменой оружия и ответными выпадами при разрыве дистанции.",
+    "tags": [
+      "mobility",
+      "weapons",
+      "free-attack",
+      "reaction"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "pirotekhnika",
+    "name": "Пиротехника",
+    "category": "ability",
+    "description": "Шпионская алхимия для ослепления, оглушения и разрушительных бросковых зарядов.",
+    "tags": [
+      "alchemy",
+      "status",
+      "grenades",
+      "stealth",
+      "armor-piercing"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "sozdanie-artefaktov",
+    "name": "Создание Артефактов",
+    "category": "ability",
+    "description": "Гильдейское мастерство изготовления артефактов и чтения уже наложенной на них мистики.",
+    "tags": [
+      "crafting",
+      "artifacts",
+      "magic",
+      "knowledge"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "bronirovannyy-mistik",
+    "name": "Бронированный Мистик",
+    "category": "ability",
+    "description": "Храмовническая школа, позволяющая кастовать в тяжелой броне и усиливать ее мистикой.",
+    "tags": [
+      "magic",
+      "armor",
+      "church",
+      "defense"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "krovavyy-boy",
+    "name": "Кровавый Бой",
+    "category": "ability",
+    "description": "Жестокая школа боя через ранение, делающая персонажа опаснее по мере потери Выживаемости.",
+    "tags": [
+      "melee",
+      "damage",
+      "healing",
+      "conditional",
+      "corruption"
+    ],
+    "source": "abilities.md"
+  },
+  {
+    "id": "misticheskaya-traditsiya-magiya-run",
+    "name": "Мистическая Традиция: Магия Рун",
+    "category": "ability",
+    "description": "Руническая традиция, умеющая выносить Порочность в филактерию и сохранять силу в предметах.",
+    "tags": [
+      "magic",
+      "tradition",
+      "runes",
+      "corruption",
+      "mystical-tradition"
+    ],
+    "source": "abilities.md"
+  }
+]
