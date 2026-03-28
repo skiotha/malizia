@@ -14,6 +14,4 @@ config/*.env
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-src/temp/*.json
-src/data/*.json
-!src/data/abilities.lookup.json
+temp/*.json
