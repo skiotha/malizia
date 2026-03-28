@@ -46,7 +46,7 @@ describe("lookup command", () => {
     });
 
     it("returns choices for a tag query", async () => {
-      const ctx = createMockAutocompleteContext("mobility");
+      const ctx = createMockAutocompleteContext("подвижность");
       await lookup.autocomplete!(ctx);
 
       const respond = ctx.respond as unknown as ReturnType<typeof mock.fn>;
@@ -81,7 +81,7 @@ describe("lookup command", () => {
       }[];
       const acro = choices.find((c) => c.value === "acrobatics");
       assert.ok(acro);
-      assert.match(acro.name, /\[.*mobility/);
+      assert.match(acro.name, /\[.*подвижность/);
     });
   });
 

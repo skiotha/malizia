@@ -20,18 +20,18 @@ describe("searchAbilities", () => {
   });
 
   it("finds ability by tag", async () => {
-    const results = await searchAbilities("mobility");
+    const results = await searchAbilities("подвижность");
     assert.ok(results.some((r) => r.id === "acrobatics"));
   });
 
   it("treats comma-separated input as tag intersection", async () => {
-    const results = await searchAbilities("mobility, defense");
+    const results = await searchAbilities("подвижность, защита");
     for (const r of results) {
       assert.ok(
-        r.tags.includes("mobility"),
-        `${r.id} should have mobility tag`,
+        r.tags.includes("подвижность"),
+        `${r.id} should have подвижность tag`,
       );
-      assert.ok(r.tags.includes("defense"), `${r.id} should have defense tag`);
+      assert.ok(r.tags.includes("защита"), `${r.id} should have защита tag`);
     }
   });
 
