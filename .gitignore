@@ -15,3 +15,4 @@ config/*.env
 .vscode-test
 
 temp/*.json
+.github/prompts

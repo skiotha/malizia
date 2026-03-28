@@ -12,6 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src/**/*", "config/**/*"],
+  "include": ["src/**/*", "config/**/*", "test/**/*"],
   "exclude": ["node_modules"]
 }
