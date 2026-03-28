@@ -4,7 +4,7 @@
     "name": "Акробатика",
     "category": "ability",
     "description": "Подвижность, маневренность и гимнастические приемы для перемещения в бою и обхода противников.",
-    "tags": ["mobility", "defense", "melee", "positioning"],
+    "tags": ["подвижность", "защита", "ближний-бой", "позиционирование"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -71,7 +71,7 @@
     "name": "Дым и Зеркала",
     "category": "ability",
     "description": "Техника боя коротким и точным оружием, основанная на скорости рук, обмане и внезапности.",
-    "tags": ["finesse", "short-weapon", "attack", "defense", "advantage"],
+    "tags": ["сноровка", "короткое-оружие", "атака", "защита", "преимущество"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -127,12 +127,12 @@
     "category": "ability",
     "description": "Дворцовая боевая техника, использующая слабости противника, внезапность и удары в спину.",
     "tags": [
-      "stealth",
-      "advantage",
-      "assassination",
-      "damage",
-      "status",
-      "finesse"
+      "скрытность",
+      "преимущество",
+      "убийство",
+      "урон",
+      "статус",
+      "сноровка"
     ],
     "source": "abilities.md",
     "tiers": {
@@ -189,12 +189,12 @@
     "category": "ability",
     "description": "Грубые и жесткие приемы ближнего боя для оглушения, опрокидывания и контратак.",
     "tags": [
-      "melee",
-      "control",
-      "stun",
-      "knockdown",
-      "counterattack",
-      "armor-piercing"
+      "ближний-бой",
+      "контроль",
+      "оглушение",
+      "опрокидывание",
+      "контратака",
+      "пробивание-брони"
     ],
     "source": "abilities.md",
     "tiers": {
@@ -250,7 +250,7 @@
     "name": "Владение Ножами",
     "category": "ability",
     "description": "Специализация на коротком режуще-колющем оружии с упором на скорость и бой вплотную.",
-    "tags": ["short-weapon", "melee", "attack", "dueling", "control"],
+    "tags": ["короткое-оружие", "ближний-бой", "атака", "дуэль", "контроль"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -305,7 +305,7 @@
     "name": "Оппортунизм",
     "category": "ability",
     "description": "Жесткая школа ближнего боя, превращающая свободные атаки в особенно опасный инструмент давления.",
-    "tags": ["melee", "free-attack", "reaction", "control"],
+    "tags": ["ближний-бой", "свободная-атака", "реакция", "контроль"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -354,7 +354,13 @@
     "name": "Быстрые Рефлексы",
     "category": "ability",
     "description": "Предельная реакция и выживаемость, позволяющие смягчать опасные удары и постоянно опережать противника.",
-    "tags": ["survival", "initiative", "reaction", "positioning", "defense"],
+    "tags": [
+      "выживаемость",
+      "инициатива",
+      "реакция",
+      "позиционирование",
+      "защита"
+    ],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -397,7 +403,7 @@
     "name": "Быстрая Рука",
     "category": "ability",
     "description": "Искусство молниеносно доставать, менять и обслуживать оружие прямо в движении.",
-    "tags": ["weapons", "reload", "mobility", "utility", "firearms"],
+    "tags": ["оружие", "перезарядка", "подвижность", "утилита", "огнестрел"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -458,7 +464,7 @@
     "name": "Алхимия",
     "category": "ability",
     "description": "Зельеварение и поиск реагентов для эликсиров, масел, гранат и особых боеприпасов.",
-    "tags": ["crafting", "alchemy", "grenades", "ammunition"],
+    "tags": ["создание", "алхимия", "гранаты", "боеприпасы"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -525,7 +531,7 @@
     "name": "Отравитель",
     "category": "ability",
     "description": "Знание ядов и способов надежно нанести их через оружие или скрытое приспособление.",
-    "tags": ["poison", "weapons", "status", "alchemy", "assassination"],
+    "tags": ["яд", "оружие", "статус", "алхимия", "убийство"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -586,7 +592,7 @@
     "name": "Удушение",
     "category": "ability",
     "description": "Тихое устранение гарротой и удушающими алхимическими средствами.",
-    "tags": ["stealth", "grapple", "poison", "armor-piercing"],
+    "tags": ["скрытность", "захват", "яд", "пробивание-брони"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -635,7 +641,7 @@
     "name": "Масла",
     "category": "ability",
     "description": "Умение извлекать из нательных масел максимум защиты и полезных вторичных эффектов.",
-    "tags": ["alchemy", "armor", "protection", "utility"],
+    "tags": ["алхимия", "броня", "охрана", "утилита"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -690,7 +696,7 @@
     "name": "Трапперство",
     "category": "ability",
     "description": "Работа с механическими и алхимическими ловушками, включая их полевое создание и обезвреживание.",
-    "tags": ["traps", "crafting", "control", "utility", "alchemy"],
+    "tags": ["ловушки", "создание", "контроль", "утилита", "алхимия"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -751,7 +757,7 @@
     "name": "Животный Мир",
     "category": "ability",
     "description": "Следопытское и биологическое знание о людях, зверях и чудовищах.",
-    "tags": ["knowledge", "tracking", "damage", "support"],
+    "tags": ["знание", "слежка", "урон", "поддержка"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -800,7 +806,7 @@
     "name": "Тактика",
     "category": "ability",
     "description": "Боевой расчет, заменяющий скорость и меткость холодным пониманием ситуации.",
-    "tags": ["utility", "attribute-swap", "initiative", "defense", "weapons"],
+    "tags": ["утилита", "замена-атрибута", "инициатива", "защита", "оружие"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -843,7 +849,7 @@
     "name": "Медик",
     "category": "ability",
     "description": "Полевая медицина, хирургия и знание тела как в лечении, так и в причинении вреда.",
-    "tags": ["healing", "support", "knowledge", "damage"],
+    "tags": ["исцеление", "поддержка", "знание", "урон"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -898,7 +904,7 @@
     "name": "Эрудит",
     "category": "ability",
     "description": "Знание языков, истории и артефактов, которое помогает понимать и использовать наследие мира.",
-    "tags": ["knowledge", "artifacts", "magic", "utility"],
+    "tags": ["знание", "артефакты", "магия", "утилита"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -959,7 +965,7 @@
     "name": "Морское Военное Дело и Артиллерия",
     "category": "ability",
     "description": "Эксплуатация и организация пушек, осадных машин и алхимического военного снаряжения.",
-    "tags": ["artillery", "utility", "crafting", "grenades"],
+    "tags": ["артиллерия", "утилита", "создание", "гранаты"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1014,7 +1020,7 @@
     "name": "Кузнец",
     "category": "ability",
     "description": "Изготовление, починка и модификация оружия, брони и боеприпасов.",
-    "tags": ["crafting", "weapons", "armor", "equipment"],
+    "tags": ["создание", "оружие", "броня", "снаряжение"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1069,7 +1075,7 @@
     "name": "Исключительный Атрибут",
     "category": "ability",
     "description": "Длительная тренировка, пробивающая обычный предел одного выбранного атрибута.",
-    "tags": ["attribute-swap", "advancement", "scaling"],
+    "tags": ["замена-атрибута", "развитие", "масштабирование"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1112,7 +1118,7 @@
     "name": "Шестое Чувство",
     "category": "ability",
     "description": "Интуитивная стрельба и ориентация без надежды на обычное зрение.",
-    "tags": ["ranged", "perception", "attribute-swap", "initiative"],
+    "tags": ["дальний-бой", "восприятие", "замена-атрибута", "инициатива"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1155,7 +1161,7 @@
     "name": "Ворожба",
     "category": "ability",
     "description": "Третий глаз, позволяющий видеть Тени, скрытую магию и подлинную природу вещей.",
-    "tags": ["magic", "perception", "shadows", "corruption"],
+    "tags": ["магия", "восприятие", "тени", "порочность"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1198,7 +1204,7 @@
     "name": "Стрельба",
     "category": "ability",
     "description": "Чистая специализация на уроне и пробивной силе оружия дальнего боя.",
-    "tags": ["ranged", "damage", "firearms", "bows", "armor-piercing"],
+    "tags": ["дальний-бой", "урон", "огнестрел", "луки", "пробивание-брони"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1241,7 +1247,7 @@
     "name": "Инстинкт Охотника",
     "category": "ability",
     "description": "Специализация на одной добыче, которая почти лишается шанса уйти живой.",
-    "tags": ["ranged", "tracking", "reaction", "damage"],
+    "tags": ["дальний-бой", "слежка", "реакция", "урон"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1284,7 +1290,7 @@
     "name": "Стычка",
     "category": "ability",
     "description": "Искусство делать дальнобойное оружие опасным даже вплотную.",
-    "tags": ["ranged", "melee", "reaction", "counterattack", "weapons"],
+    "tags": ["дальний-бой", "ближний-бой", "реакция", "контратака", "оружие"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1327,7 +1333,7 @@
     "name": "Трюковая Стрельба",
     "category": "ability",
     "description": "Точный контроль над выстрелом ради обезоруживания, ослепления и других эффектных приемов.",
-    "tags": ["ranged", "control", "reaction", "utility"],
+    "tags": ["дальний-бой", "контроль", "реакция", "утилита"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1376,7 +1382,7 @@
     "name": "Заградительный Огонь",
     "category": "ability",
     "description": "Техника выпуска множества стрел или выстрелов за один ход.",
-    "tags": ["ranged", "multiattack", "bows", "firearms", "reload"],
+    "tags": ["дальний-бой", "мультиатака", "луки", "огнестрел", "перезарядка"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1425,7 +1431,7 @@
     "name": "Стальной Бросок",
     "category": "ability",
     "description": "Мастерство метательного оружия и превращения почти любого предмета в снаряд.",
-    "tags": ["thrown", "multiattack", "damage", "weapons", "flexibility"],
+    "tags": ["метательное", "мультиатака", "урон", "оружие", "гибкость"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1474,7 +1480,7 @@
     "name": "Танец с Плащом",
     "category": "ability",
     "description": "Дуэльная техника использования плаща или другой ткани как активного оборонительного инструмента.",
-    "tags": ["defense", "cloak", "control", "free-attack", "dueling"],
+    "tags": ["защита", "плащ", "контроль", "свободная-атака", "дуэль"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1523,7 +1529,7 @@
     "name": "Благословенный Мечник",
     "category": "ability",
     "description": "Высшая техника владения сбалансированным мечом с упором на контратаки и чистую дуэль.",
-    "tags": ["weapons", "dueling", "free-attack", "counterattack"],
+    "tags": ["оружие", "дуэль", "свободная-атака", "контратака"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1572,7 +1578,7 @@
     "name": "На вершине",
     "category": "ability",
     "description": "Техника боевых каблуков, совмещающая удары ногами и руками в один ритм.",
-    "tags": ["equipment", "melee", "free-attack", "weapons", "dueling"],
+    "tags": ["снаряжение", "ближний-бой", "свободная-атака", "оружие", "дуэль"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1621,7 +1627,7 @@
     "name": "Опутывание",
     "category": "ability",
     "description": "Владение сетями, боласами, кнутами и прочим оружием, которое сначала связывает, а потом душит.",
-    "tags": ["entangling", "control", "knockdown", "armor-piercing"],
+    "tags": ["опутывание", "контроль", "опрокидывание", "пробивание-брони"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1664,7 +1670,7 @@
     "name": "Мастерство Владения Составным Оружием",
     "category": "ability",
     "description": "Искусство обращения с цепами, цепными мечами и другим составным оружием.",
-    "tags": ["weapons", "entangling", "multiattack", "damage", "reach"],
+    "tags": ["оружие", "опутывание", "мультиатака", "урон", "досягаемость"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1707,7 +1713,7 @@
     "name": "Рисунки Топорами",
     "category": "ability",
     "description": "Специализация на топорах, сочетающая оглушающие размены и мощные рубящие удары.",
-    "tags": ["weapons", "melee", "multiattack", "stun", "damage"],
+    "tags": ["оружие", "ближний-бой", "мультиатака", "оглушение", "урон"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1750,7 +1756,13 @@
     "name": "Древковое Оружие",
     "category": "ability",
     "description": "Классическое мастерство длинного оружия, контролирующего дистанцию и движение врага.",
-    "tags": ["polearm", "reach", "control", "free-attack", "melee"],
+    "tags": [
+      "древковое",
+      "досягаемость",
+      "контроль",
+      "свободная-атака",
+      "ближний-бой"
+    ],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1799,7 +1811,7 @@
     "name": "Владение Посохами",
     "category": "ability",
     "description": "Подвид мастерства длинного оружия, делающий посох одновременно защитой, рычагом и ударным инструментом.",
-    "tags": ["polearm", "defense", "free-attack", "knockdown"],
+    "tags": ["древковое", "защита", "свободная-атака", "опрокидывание"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1848,7 +1860,7 @@
     "name": "Двойной Удар",
     "category": "ability",
     "description": "Боевой стиль с двумя клинками или иными оружиями в обеих руках.",
-    "tags": ["off-hand", "multiattack", "melee", "defense"],
+    "tags": ["вторая-рука", "мультиатака", "ближний-бой", "защита"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1897,7 +1909,7 @@
     "name": "Железное Тело",
     "category": "ability",
     "description": "Грубая физическая мощь, заменяющая точность и повышающая урон в ближнем бою.",
-    "tags": ["strength", "melee", "attribute-swap", "damage"],
+    "tags": ["сила", "ближний-бой", "замена-атрибута", "урон"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1940,7 +1952,7 @@
     "name": "Бегемот",
     "category": "ability",
     "description": "Специализация на тяжелом двуручном оружии и его инерции.",
-    "tags": ["weapons", "damage", "armor-piercing"],
+    "tags": ["оружие", "урон", "пробивание-брони"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -1983,7 +1995,7 @@
     "name": "Щиты",
     "category": "ability",
     "description": "Боевой стиль, в котором щит становится не только защитой, но и ударным оружием.",
-    "tags": ["shield", "defense", "melee", "knockdown", "off-hand"],
+    "tags": ["щит", "защита", "ближний-бой", "опрокидывание", "вторая-рука"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2038,7 +2050,7 @@
     "name": "Невооруженный Бой",
     "category": "ability",
     "description": "Полноценное боевое искусство голыми руками, когтями и любым натуральным оружием тела.",
-    "tags": ["weapons", "multiattack", "damage", "melee"],
+    "tags": ["оружие", "мультиатака", "урон", "ближний-бой"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2087,7 +2099,13 @@
     "name": "Борьба",
     "category": "ability",
     "description": "Контроль тела противника через захваты, броски и удушающие удержания без всякой магии.",
-    "tags": ["grapple", "thrown", "control", "reaction", "armor-piercing"],
+    "tags": [
+      "захват",
+      "метательное",
+      "контроль",
+      "реакция",
+      "пробивание-брони"
+    ],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2136,7 +2154,7 @@
     "name": "Ярость",
     "category": "ability",
     "description": "Осознанная боевая злость, которая жертвует защитой ради разрушительной ближней атаки.",
-    "tags": ["melee", "damage", "defense"],
+    "tags": ["ближний-бой", "урон", "защита"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2185,7 +2203,7 @@
     "name": "Восстановление",
     "category": "ability",
     "description": "Медитативное самолечение, позволяющее быстро поднимать себя на ноги даже в бою.",
-    "tags": ["healing", "will", "reaction", "survival"],
+    "tags": ["исцеление", "воля", "реакция", "выживаемость"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2234,7 +2252,7 @@
     "name": "Подвиг Силы",
     "category": "ability",
     "description": "Героическая мощь, делающая тело выносливее и опаснее без всякой магической цены.",
-    "tags": ["strength", "survival", "damage", "conditional"],
+    "tags": ["сила", "выживаемость", "урон", "условное"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2277,7 +2295,7 @@
     "name": "Телохранитель",
     "category": "ability",
     "description": "Искусство закрывать союзников собой и немедленно карать тех, кто поднимает на них руку.",
-    "tags": ["protection", "support", "reaction", "defense", "counterattack"],
+    "tags": ["охрана", "поддержка", "реакция", "защита", "контратака"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2320,7 +2338,7 @@
     "name": "Солдат",
     "category": "ability",
     "description": "Профессиональное владение броней, превращающее ее во вторую кожу и мистическую опору.",
-    "tags": ["armor", "defense", "mobility", "magic", "equipment"],
+    "tags": ["броня", "защита", "подвижность", "магия", "снаряжение"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2369,7 +2387,7 @@
     "name": "Стойкость",
     "category": "ability",
     "description": "Ментальная дисциплина и воля, защищающие от ограничений и отражающие слабые психические удары.",
-    "tags": ["resistance", "will", "strength", "mental", "reaction"],
+    "tags": ["сопротивление", "воля", "сила", "ментальное", "реакция"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2412,7 +2430,7 @@
     "name": "Мистические Силы",
     "category": "ability",
     "description": "Базовая способность владеть заклинаниями, которые повышают постоянную и временную Порочность.",
-    "tags": ["magic", "spellcasting", "corruption", "tradition"],
+    "tags": ["магия", "заклинания", "порочность", "традиция"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2455,7 +2473,7 @@
     "name": "Мистическая Традиция: Орден",
     "category": "ability",
     "description": "Академическая традиция Ордена, снижающая цену изучения и применения собственных заклинаний.",
-    "tags": ["magic", "tradition", "mystical-tradition", "mental"],
+    "tags": ["магия", "традиция", "мистическая-традиция", "ментальное"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2510,7 +2528,7 @@
     "name": "Мистическая Традиция: Круг Ведьм",
     "category": "ability",
     "description": "Дикая ведьмовская традиция, снижающая Порочность своих проклятий, природной магии и ритуалов.",
-    "tags": ["magic", "tradition", "mystical-tradition", "curse"],
+    "tags": ["магия", "традиция", "мистическая-традиция", "проклятие"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2560,12 +2578,12 @@
     "category": "ability",
     "description": "Церковная традиция Аполеаты, снижающая цену исцеляющей и защитной магии и усиливающая ее против чудовищ.",
     "tags": [
-      "magic",
-      "tradition",
-      "church",
-      "healing",
-      "protection",
-      "mystical-tradition"
+      "магия",
+      "традиция",
+      "церковь",
+      "исцеление",
+      "охрана",
+      "мистическая-традиция"
     ],
     "source": "abilities.md",
     "tiers": {
@@ -2621,7 +2639,7 @@
     "name": "Мистическая Традиция: Ратассан",
     "category": "ability",
     "description": "Дворцовая лапалийская традиция огненной и боевой магии, снижающая цену собственной школы.",
-    "tags": ["magic", "tradition", "mystical-tradition", "fire"],
+    "tags": ["магия", "традиция", "мистическая-традиция", "огонь"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2676,13 +2694,7 @@
     "name": "Мистическая Традиция: Колдовство",
     "category": "ability",
     "description": "Колдовская традиция, которая не избегает Порока, а учится использовать его как топливо и оружие.",
-    "tags": [
-      "magic",
-      "tradition",
-      "corruption",
-      "shadows",
-      "mystical-tradition"
-    ],
+    "tags": ["магия", "традиция", "порочность", "тени", "мистическая-традиция"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2726,11 +2738,11 @@
     "category": "ability",
     "description": "Песенная традиция подчинения и очарования, делающая магию разума особенно устойчивой.",
     "tags": [
-      "magic",
-      "tradition",
-      "mystical-tradition",
-      "mental",
-      "mind-control"
+      "магия",
+      "традиция",
+      "мистическая-традиция",
+      "ментальное",
+      "контроль-разума"
     ],
     "source": "abilities.md",
     "tiers": {
@@ -2793,11 +2805,11 @@
     "category": "ability",
     "description": "Традиция магических символов, заранее подготавливающая и упаковывающая эффекты без немедленного вреда Тени.",
     "tags": [
-      "magic",
-      "tradition",
-      "mystical-tradition",
-      "spellcasting",
-      "traps"
+      "магия",
+      "традиция",
+      "мистическая-традиция",
+      "заклинания",
+      "ловушки"
     ],
     "source": "abilities.md",
     "tiers": {
@@ -2847,7 +2859,7 @@
     "name": "Ритуалист",
     "category": "ability",
     "description": "Умение изучать, распознавать и проводить долгие мистические ритуалы разных традиций.",
-    "tags": ["magic", "corruption", "knowledge", "tradition"],
+    "tags": ["магия", "порочность", "знание", "традиция"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2890,7 +2902,7 @@
     "name": "Особый Дар",
     "category": "ability",
     "description": "Редкий мистический талант, помогающий безопаснее носить Порок и пользоваться более широкой магией.",
-    "tags": ["magic", "corruption", "spellcasting", "scaling"],
+    "tags": ["магия", "порочность", "заклинания", "масштабирование"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2939,7 +2951,7 @@
     "name": "Направляемый Грех",
     "category": "ability",
     "description": "Манипуляция Порочностью как собственной энергией: перенаправление, усиление и сброс на других.",
-    "tags": ["corruption", "magic", "utility", "will"],
+    "tags": ["порочность", "магия", "утилита", "воля"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -2982,7 +2994,7 @@
     "name": "Ладони демиурга",
     "category": "ability",
     "description": "Навык раскрывать потенциал дорогих мистических ладоней и безопаснее перенаправлять в них Порочность.",
-    "tags": ["magic", "equipment", "corruption", "flexibility"],
+    "tags": ["магия", "снаряжение", "порочность", "гибкость"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3043,7 +3055,7 @@
     "name": "Рунические Тату",
     "category": "ability",
     "description": "Использование нанесенных ритуалом татуировок как скрытого источника защиты, исцеления и урона.",
-    "tags": ["magic", "corruption", "armor", "damage"],
+    "tags": ["магия", "порочность", "броня", "урон"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3092,7 +3104,7 @@
     "name": "Лидер",
     "category": "ability",
     "description": "Харизматичное командование, превращающее личную волю в силу заклинаний и боевой координации.",
-    "tags": ["leadership", "charisma", "support", "magic"],
+    "tags": ["лидерство", "харизма", "поддержка", "магия"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3135,7 +3147,7 @@
     "name": "Доминирование",
     "category": "ability",
     "description": "Подавляющее присутствие, которое заставляет врага колебаться, отступать или прекращать бой.",
-    "tags": ["charisma", "control", "melee", "mind-control"],
+    "tags": ["харизма", "контроль", "ближний-бой", "контроль-разума"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3178,7 +3190,7 @@
     "name": "Маневренный Бой",
     "category": "ability",
     "description": "Подвижный пиратский стиль боя с постоянной сменой оружия и ответными выпадами при разрыве дистанции.",
-    "tags": ["mobility", "weapons", "free-attack", "reaction"],
+    "tags": ["подвижность", "оружие", "свободная-атака", "реакция"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3227,7 +3239,7 @@
     "name": "Пиротехника",
     "category": "ability",
     "description": "Шпионская алхимия для ослепления, оглушения и разрушительных бросковых зарядов.",
-    "tags": ["alchemy", "status", "grenades", "stealth", "armor-piercing"],
+    "tags": ["алхимия", "статус", "гранаты", "скрытность", "пробивание-брони"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3276,7 +3288,7 @@
     "name": "Создание Артефактов",
     "category": "ability",
     "description": "Гильдейское мастерство изготовления артефактов и чтения уже наложенной на них мистики.",
-    "tags": ["crafting", "artifacts", "magic", "knowledge"],
+    "tags": ["создание", "артефакты", "магия", "знание"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3319,7 +3331,7 @@
     "name": "Бронированный Мистик",
     "category": "ability",
     "description": "Храмовническая школа, позволяющая кастовать в тяжелой броне и усиливать ее мистикой.",
-    "tags": ["magic", "armor", "church", "defense"],
+    "tags": ["магия", "броня", "церковь", "защита"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3362,7 +3374,7 @@
     "name": "Кровавый Бой",
     "category": "ability",
     "description": "Жестокая школа боя через ранение, делающая персонажа опаснее по мере потери Выживаемости.",
-    "tags": ["melee", "damage", "healing", "conditional", "corruption"],
+    "tags": ["ближний-бой", "урон", "исцеление", "условное", "порочность"],
     "source": "abilities.md",
     "tiers": {
       "novice": {
@@ -3405,7 +3417,7 @@
     "name": "Мистическая Традиция: Магия Рун",
     "category": "ability",
     "description": "Руническая традиция, умеющая выносить Порочность в филактерию и сохранять силу в предметах.",
-    "tags": ["magic", "tradition", "runes", "corruption", "mystical-tradition"],
+    "tags": ["магия", "традиция", "руны", "порочность", "мистическая-традиция"],
     "source": "abilities.md",
     "tiers": {
       "novice": {

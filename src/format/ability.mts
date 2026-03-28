@@ -1,11 +1,6 @@
 import type { Embed } from "#types";
 import type { Ability, AbilitySummary, AbilityTier } from "#data";
-
-const TIER_LABELS: Record<string, string> = {
-  novice: "Novice",
-  adept: "Adept",
-  master: "Master",
-};
+import { t, type Locale } from "#i18n";
 
 const EMBED_COLOR = 0x5865f2; // Discord blurple
 const AUTOCOMPLETE_MAX = 100;
@@ -19,11 +14,11 @@ function formatTierField(tier: AbilityTier): string {
   return text.length > 1024 ? text.slice(0, 1021) + "..." : text;
 }
 
-export function formatAbilityEmbed(ability: Ability): Embed {
+export function formatAbilityEmbed(ability: Ability, locale: Locale): Embed {
   const fields = [];
   for (const [tier, data] of Object.entries(ability.tiers)) {
     fields.push({
-      name: TIER_LABELS[tier] ?? tier,
+      name: t(locale, `tier.${tier}`),
       value: formatTierField(data),
     });
   }

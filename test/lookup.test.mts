@@ -14,6 +14,7 @@ function createMockContext(
   }
   return {
     options: map,
+    locale: "en",
     reply: mock.fn(async () => {}),
   } as unknown as CommandContext;
 }
@@ -23,6 +24,7 @@ function createMockAutocompleteContext(
 ): AutocompleteContext {
   return {
     options: new Map(),
+    locale: "en",
     focusedOption: "query",
     focusedValue,
     respond: mock.fn(async () => {}),
@@ -31,8 +33,8 @@ function createMockAutocompleteContext(
 
 describe("lookup command", () => {
   describe("autocomplete", () => {
-    it("returns choices for a partial Russian name", async () => {
-      const ctx = createMockAutocompleteContext("Акроб");
+    it("returns choices for a partial English name", async () => {
+      const ctx = createMockAutocompleteContext("Acrob");
       await lookup.autocomplete!(ctx);
 
       const respond = ctx.respond as unknown as ReturnType<typeof mock.fn>;
@@ -95,12 +97,12 @@ describe("lookup command", () => {
       const opts = reply.mock.calls[0]!.arguments[1] as any;
       assert.strictEqual(opts.ephemeral, true);
       assert.ok(opts.embeds?.length > 0);
-      assert.strictEqual(opts.embeds[0].title, "Акробатика");
+      assert.strictEqual(opts.embeds[0].title, "Acrobatics");
       assert.ok(opts.components?.length > 0);
     });
 
     it("falls back to search when query is not an id", async () => {
-      const ctx = createMockContext({ query: "Акроб" });
+      const ctx = createMockContext({ query: "Acrob" });
       await lookup.execute(ctx);
 
       const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;

@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import type { Locale } from "#i18n";
 
 // ── Types ──────────────────────────────────────────────
 
@@ -37,18 +38,20 @@ export interface AbilitySummary {
 
 // ── Local data cache ───────────────────────────────────
 
-let abilities: Ability[] | undefined;
+const cache = new Map<Locale, Ability[]>();
 
-async function loadAbilities(): Promise<Ability[]> {
-  if (abilities) return abilities;
+async function loadAbilities(locale: Locale): Promise<Ability[]> {
+  const cached = cache.get(locale);
+  if (cached) return cached;
 
   // const data = await apiGet("/api/abilities");
   // abilities = data as Ability[];
   const raw = await readFile(
-    new URL("../data/abilities.lookup.json", import.meta.url),
+    new URL(`../data/abilities.${locale}.json`, import.meta.url),
     "utf-8",
   );
-  abilities = JSON.parse(raw) as Ability[];
+  const abilities = JSON.parse(raw) as Ability[];
+  cache.set(locale, abilities);
   return abilities;
 }
 
@@ -85,8 +88,9 @@ function toSummary(ability: Ability): AbilitySummary {
 
 export async function searchAbilities(
   query: string,
+  locale: Locale,
 ): Promise<AbilitySummary[]> {
-  const all = await loadAbilities();
+  const all = await loadAbilities(locale);
   const trimmed = query.trim();
   if (!trimmed) return all.slice(0, 25).map(toSummary);
 
@@ -112,7 +116,10 @@ export async function searchAbilities(
   return [...nameMatches, ...tagMatches].map(toSummary);
 }
 
-export async function getAbility(id: string): Promise<Ability | undefined> {
-  const all = await loadAbilities();
+export async function getAbility(
+  id: string,
+  locale: Locale,
+): Promise<Ability | undefined> {
+  const all = await loadAbilities(locale);
   return all.find((a) => a.id === id);
 }

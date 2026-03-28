@@ -26,13 +26,14 @@ npm test             # run tests with node:test
 - **`src/lib/api.mts`** — `apiGet()` helper for querying the external Nagara RPG web-server
 - **`src/lib/types.mts`** — `Command`, `CommandContext`, `AutocompleteContext`, `ComponentContext`, `Interaction`, and related interfaces
 - **`src/lib/dice.mts`** — dice parsing and rolling helpers (`parseDice`, `rollDice`, `DiceGroup`, `RollResult`, `Check`, `CheckOperator`, `ParsedExpression`)
-- **`src/lib/data.mts`** — data provider for RPG ability lookup; `searchAbilities(query)` and `getAbility(id)` with local JSON cache
+- **`src/lib/i18n.mts`** — `Locale` type, `resolveLocale()` (user-first, guild-fallback), `t(locale, key, params?)` translation helper, and string tables for `en`/`ru`
+- **`src/lib/data.mts`** — data provider for RPG ability lookup; `searchAbilities(query, locale)` and `getAbility(id, locale)` with per-locale JSON cache
 - **`src/lib/components.mts`** — centralized component interaction registry; `registerComponent(prefix, handler)` and `resolveComponent(customId)`
 - **`src/lib/constants.mts`** — shared constants (Discord API version, base URLs)
 - **`src/commands/`** — one file per command, each exporting a `Command` (data + execute + optional autocomplete); registered in `index.mts`
 - **`src/events/`** — event handlers dispatched by the gateway; registered in `index.mts`; handles interaction types 2 (command), 3 (component), and 4 (autocomplete)
 - **`src/format/`** — formatting/presentation functions separated from command logic (e.g. `ability.mts`, `roll.mts`)
-- **`src/data/`** — static data files (e.g. `abilities.lookup.json`)
+- **`src/data/`** — static data files per locale (e.g. `abilities.en.json`, `abilities.ru.json`)
 
 ## Module Import Aliases
 
@@ -50,6 +51,7 @@ Defined in `package.json` `"imports"`:
 | `#dice`           | `src/lib/dice.mts`       |
 | `#data`           | `src/lib/data.mts`       |
 | `#components`     | `src/lib/components.mts` |
+| `#i18n`           | `src/lib/i18n.mts`       |
 | `#format/ability` | `src/format/ability.mts` |
 | `#format/roll`    | `src/format/roll.mts`    |
 
@@ -64,6 +66,7 @@ Always use these aliases for cross-module imports rather than relative paths. Ad
 - Event handlers go in `src/events/`
 - Environment variables are loaded via `--env-file-if-exists` from `config/` — never use `dotenv` or similar packages
 - Do not add npm dependencies unless absolutely necessary
+- All user-facing strings use `t(locale, key, params?)` from `#i18n`; format functions and command handlers receive `locale: Locale` via context
 
 ## Testing
 

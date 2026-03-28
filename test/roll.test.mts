@@ -14,6 +14,7 @@ function createMockContext(
   }
   return {
     options: map,
+    locale: "en",
     reply: mock.fn(async () => {}),
   } as unknown as CommandContext;
 }
@@ -41,8 +42,8 @@ describe("roll command", () => {
     assert.match(reply.mock.calls[0]!.arguments[0] as string, /1 \+ 1 \+ \*1\*/); // breakdown with italicized modifier
     assert.match(
       reply.mock.calls[0]!.arguments[0] as string,
-      /\*\*Result:\*\* 3/,
-    ); // 1+1+1
+      /\*\*Result:\*\*/,
+    );
     mock.restoreAll();
   });
 

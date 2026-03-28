@@ -1,3 +1,5 @@
+import type { Locale } from "#i18n";
+
 export const OptionType = {
 	String: 3,
 	Integer: 4,
@@ -7,14 +9,18 @@ export const OptionType = {
 export interface CommandOption {
 	type: number;
 	name: string;
+	name_localizations?: Record<string, string>;
 	description: string;
+	description_localizations?: Record<string, string>;
 	required?: boolean;
 	autocomplete?: boolean;
 }
 
 export interface CommandData {
 	name: string;
+	name_localizations?: Record<string, string>;
 	description: string;
+	description_localizations?: Record<string, string>;
 	options?: CommandOption[];
 }
 
@@ -53,6 +59,7 @@ export interface ReplyOptions {
 export interface CommandContext {
 	interaction: Interaction;
 	options: Map<string, string | number | boolean>;
+	locale: Locale;
 	reply(content: string, options?: ReplyOptions): Promise<void>;
 }
 
@@ -64,6 +71,7 @@ export interface AutocompleteChoice {
 export interface AutocompleteContext {
 	interaction: Interaction;
 	options: Map<string, string | number | boolean>;
+	locale: Locale;
 	focusedOption: string;
 	focusedValue: string;
 	respond(choices: AutocompleteChoice[]): Promise<void>;
@@ -82,6 +90,8 @@ export interface Interaction {
 	data?: InteractionData;
 	guild_id?: string;
 	channel_id?: string;
+	locale?: string;
+	guild_locale?: string;
 }
 
 export interface InteractionData {
@@ -96,6 +106,7 @@ export interface ComponentContext {
 	interaction: Interaction;
 	customId: string;
 	params: string[];
+	locale: Locale;
 	reply(content: string, options?: ReplyOptions): Promise<void>;
 }
 

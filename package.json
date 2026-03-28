@@ -26,6 +26,7 @@
     "#dice": "./src/lib/dice.mts",
     "#data": "./src/lib/data.mts",
     "#components": "./src/lib/components.mts",
+    "#i18n": "./src/lib/i18n.mts",
     "#format/ability": "./src/format/ability.mts",
     "#format/roll": "./src/format/roll.mts"
   },

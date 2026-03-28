@@ -2,6 +2,7 @@ import type { DiscordRest } from "#rest";
 import type { AutocompleteChoice, Interaction, ReplyOptions } from "#types";
 import { commands } from "#commands";
 import { resolveComponent } from "#components";
+import { resolveLocale, t } from "#i18n";
 
 const InteractionType = {
   ApplicationCommand: 2,
@@ -60,11 +61,13 @@ export async function onInteractionCreate(
   };
 
   try {
-    await command.execute({ interaction, options, reply });
+    const locale = resolveLocale(interaction.guild_locale, interaction.locale);
+    await command.execute({ interaction, options, locale, reply });
   } catch (error) {
     console.error(`Error executing /${interaction.data.name}:`, error);
     try {
-      await reply("Something went wrong running that command.", {
+      const locale = resolveLocale(interaction.guild_locale, interaction.locale);
+      await reply(t(locale, "error.command"), {
         ephemeral: true,
       });
     } catch {
@@ -104,9 +107,11 @@ async function handleAutocomplete(
   };
 
   try {
+    const locale = resolveLocale(interaction.guild_locale, interaction.locale);
     await command.autocomplete({
       interaction,
       options,
+      locale,
       focusedOption,
       focusedValue,
       respond,
@@ -151,16 +156,19 @@ async function handleComponent(
   };
 
   try {
+    const locale = resolveLocale(interaction.guild_locale, interaction.locale);
     await match.handler({
       interaction,
       customId,
       params: match.params,
+      locale,
       reply,
     });
   } catch (error) {
     console.error(`Error handling component ${customId}:`, error);
     try {
-      await reply("Something went wrong.", { ephemeral: true });
+      const locale = resolveLocale(interaction.guild_locale, interaction.locale);
+      await reply(t(locale, "error.component"), { ephemeral: true });
     } catch {
       // Interaction may have already been responded to
     }
