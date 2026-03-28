@@ -23,7 +23,11 @@
     "#gateway": "./src/lib/gateway.mts",
     "#rest": "./src/lib/rest.mts",
     "#constants": "./src/lib/constants.mts",
-    "#dice": "./src/lib/dice.mts"
+    "#dice": "./src/lib/dice.mts",
+    "#data": "./src/lib/data.mts",
+    "#components": "./src/lib/components.mts",
+    "#format/ability": "./src/format/ability.mts",
+    "#format/roll": "./src/format/roll.mts"
   },
   "license": "MIT",
   "author": "ahani",

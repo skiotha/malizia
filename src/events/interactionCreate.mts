@@ -1,9 +1,17 @@
 import type { DiscordRest } from "#rest";
-import type { Interaction } from "#types";
+import type { AutocompleteChoice, Interaction, ReplyOptions } from "#types";
 import { commands } from "#commands";
+import { resolveComponent } from "#components";
 
-const InteractionType = { ApplicationCommand: 2 } as const;
-const CallbackType = { ChannelMessageWithSource: 4 } as const;
+const InteractionType = {
+  ApplicationCommand: 2,
+  MessageComponent: 3,
+  ApplicationCommandAutocomplete: 4,
+} as const;
+const CallbackType = {
+  ChannelMessageWithSource: 4,
+  AutocompleteResult: 8,
+} as const;
 const MessageFlags = { Ephemeral: 64 } as const;
 
 export async function onInteractionCreate(
@@ -11,8 +19,17 @@ export async function onInteractionCreate(
   rest: DiscordRest,
 ): Promise<void> {
   const interaction = data as Interaction;
-  if (interaction.type !== InteractionType.ApplicationCommand) return;
   if (!interaction.data) return;
+
+  if (interaction.type === InteractionType.ApplicationCommandAutocomplete) {
+    return handleAutocomplete(interaction, rest);
+  }
+
+  if (interaction.type === InteractionType.MessageComponent) {
+    return handleComponent(interaction, rest);
+  }
+
+  if (interaction.type !== InteractionType.ApplicationCommand) return;
 
   const command = commands.get(interaction.data.name);
 
@@ -26,15 +43,17 @@ export async function onInteractionCreate(
     options.set(opt.name, opt.value);
   }
 
-  const reply = async (content: string, opts?: { ephemeral?: boolean }) => {
+  const reply = async (content: string, opts?: ReplyOptions) => {
     await rest.request(
       "POST",
       `/interactions/${interaction.id}/${interaction.token}/callback`,
       {
         type: CallbackType.ChannelMessageWithSource,
         data: {
-          content,
+          content: content || undefined,
           flags: opts?.ephemeral ? MessageFlags.Ephemeral : 0,
+          embeds: opts?.embeds,
+          components: opts?.components,
         },
       },
     );
@@ -48,6 +67,100 @@ export async function onInteractionCreate(
       await reply("Something went wrong running that command.", {
         ephemeral: true,
       });
+    } catch {
+      // Interaction may have already been responded to
+    }
+  }
+}
+
+async function handleAutocomplete(
+  interaction: Interaction,
+  rest: DiscordRest,
+): Promise<void> {
+  const command = commands.get(interaction.data!.name);
+  if (!command?.autocomplete) return;
+
+  const options = new Map<string, string | number | boolean>();
+  let focusedOption = "";
+  let focusedValue = "";
+
+  for (const opt of interaction.data!.options ?? []) {
+    options.set(opt.name, opt.value);
+    if (opt.focused) {
+      focusedOption = opt.name;
+      focusedValue = String(opt.value);
+    }
+  }
+
+  const respond = async (choices: AutocompleteChoice[]) => {
+    await rest.request(
+      "POST",
+      `/interactions/${interaction.id}/${interaction.token}/callback`,
+      {
+        type: CallbackType.AutocompleteResult,
+        data: { choices },
+      },
+    );
+  };
+
+  try {
+    await command.autocomplete({
+      interaction,
+      options,
+      focusedOption,
+      focusedValue,
+      respond,
+    });
+  } catch (error) {
+    console.error(`Error in autocomplete for /${interaction.data!.name}:`, error);
+    try {
+      await respond([]);
+    } catch {
+      // Interaction may have already been responded to
+    }
+  }
+}
+
+async function handleComponent(
+  interaction: Interaction,
+  rest: DiscordRest,
+): Promise<void> {
+  const customId = interaction.data!.custom_id;
+  if (!customId) return;
+
+  const match = resolveComponent(customId);
+  if (!match) {
+    console.warn(`No handler for component: ${customId}`);
+    return;
+  }
+
+  const reply = async (content: string, opts?: ReplyOptions) => {
+    await rest.request(
+      "POST",
+      `/interactions/${interaction.id}/${interaction.token}/callback`,
+      {
+        type: CallbackType.ChannelMessageWithSource,
+        data: {
+          content: content || undefined,
+          flags: opts?.ephemeral ? MessageFlags.Ephemeral : 0,
+          embeds: opts?.embeds,
+          components: opts?.components,
+        },
+      },
+    );
+  };
+
+  try {
+    await match.handler({
+      interaction,
+      customId,
+      params: match.params,
+      reply,
+    });
+  } catch (error) {
+    console.error(`Error handling component ${customId}:`, error);
+    try {
+      await reply("Something went wrong.", { ephemeral: true });
     } catch {
       // Interaction may have already been responded to
     }
