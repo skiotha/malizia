@@ -1,24 +1,6 @@
-import { parseDice, rollDice, type RollResult, type Check } from "#dice";
+import { parseDice, rollDice } from "#dice";
 import { OptionType, type Command } from "#types";
-
-function formatRoll(result: RollResult, check?: Check): string {
-  const parts = result.rolls.map(String);
-  if (result.modifier > 0) parts.push(`*${result.modifier}*`);
-  else if (result.modifier < 0) parts.push(String(result.modifier));
-  const breakdown = parts.join(" + ");
-  if (!check) return breakdown;
-  const pass = evaluateCheck(result.total, check);
-  return `${pass ? "Success!" : "Failure!"} ${breakdown}`;
-}
-
-function evaluateCheck(total: number, check: Check): boolean {
-  switch (check.operator) {
-    case "<":  return total < check.threshold;
-    case "<=": return total <= check.threshold;
-    case ">":  return total > check.threshold;
-    case ">=": return total >= check.threshold;
-  }
-}
+import { formatRollReply } from "#format/roll";
 
 export const roll: Command = {
   data: {
@@ -50,11 +32,6 @@ export const roll: Command = {
 
     const results = dice.map(rollDice);
 
-    const breakdowns = results.map((r) => formatRoll(r, check));
-    const totals = results.map((r) => r.total);
-
-    await ctx.reply(
-      `-# **Rolling ${expression}:**\n-# ${breakdowns.join(";\n-# ")}\n**Result:** ${totals.join(", ")}`,
-    );
+    await ctx.reply(formatRollReply(expression, results, check));
   },
 };

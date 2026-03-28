@@ -26,7 +26,7 @@ describe("roll command", () => {
 
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
     assert.strictEqual(reply.mock.calls.length, 1);
-    assert.match(reply.mock.calls[0].arguments[0] as string, /Rolling 1d20/);
+    assert.match(reply.mock.calls[0]!.arguments[0] as string, /Rolling 1d20/);
     mock.restoreAll();
   });
 
@@ -37,10 +37,10 @@ describe("roll command", () => {
 
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
     assert.strictEqual(reply.mock.calls.length, 1);
-    assert.match(reply.mock.calls[0].arguments[0] as string, /Rolling 2d6\+1/);
-    assert.match(reply.mock.calls[0].arguments[0] as string, /1 \+ 1 \+ \*1\*/); // breakdown with italicized modifier
+    assert.match(reply.mock.calls[0]!.arguments[0] as string, /Rolling 2d6\+1/);
+    assert.match(reply.mock.calls[0]!.arguments[0] as string, /1 \+ 1 \+ \*1\*/); // breakdown with italicized modifier
     assert.match(
-      reply.mock.calls[0].arguments[0] as string,
+      reply.mock.calls[0]!.arguments[0] as string,
       /\*\*Result:\*\* 3/,
     ); // 1+1+1
     mock.restoreAll();
@@ -53,10 +53,10 @@ describe("roll command", () => {
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
     assert.strictEqual(reply.mock.calls.length, 1);
     assert.match(
-      reply.mock.calls[0].arguments[0] as string,
+      reply.mock.calls[0]!.arguments[0] as string,
       /Invalid dice expression/,
     );
-    assert.deepStrictEqual(reply.mock.calls[0].arguments[1], {
+    assert.deepStrictEqual(reply.mock.calls[0]!.arguments[1], {
       ephemeral: true,
     });
   });
@@ -67,7 +67,7 @@ describe("roll command", () => {
     await roll.execute(ctx);
 
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
-    assert.match(reply.mock.calls[0].arguments[0] as string, /Success!/);
+    assert.match(reply.mock.calls[0]!.arguments[0] as string, /Success!/);
     mock.restoreAll();
   });
 
@@ -77,7 +77,7 @@ describe("roll command", () => {
     await roll.execute(ctx);
 
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
-    assert.match(reply.mock.calls[0].arguments[0] as string, /Failure!/);
+    assert.match(reply.mock.calls[0]!.arguments[0] as string, /Failure!/);
     mock.restoreAll();
   });
 
@@ -87,7 +87,7 @@ describe("roll command", () => {
     await roll.execute(ctx);
 
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
-    const text = reply.mock.calls[0].arguments[0] as string;
+    const text = reply.mock.calls[0]!.arguments[0] as string;
     assert.match(text, /\*\*Result:\*\* 1, 2, 2/);
     assert.doesNotMatch(text, /Success!|Failure!/);
     mock.restoreAll();
@@ -99,7 +99,7 @@ describe("roll command", () => {
     await roll.execute(ctx);
 
     const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
-    const text = reply.mock.calls[0].arguments[0] as string;
+    const text = reply.mock.calls[0]!.arguments[0] as string;
     // d20: total 1, 3d8+2: total 5, 2d10: total 2 — all not > 10
     assert.doesNotMatch(text, /Success!/);
     assert.match(text, /Failure!/);
