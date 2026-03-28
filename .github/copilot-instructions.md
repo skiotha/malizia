@@ -24,33 +24,43 @@ npm test             # run tests with node:test
 - **`src/lib/gateway.mts`** — `Gateway` class; manages the WebSocket connection to Discord (heartbeat, identify, resume, reconnect), emits `dispatch` events
 - **`src/lib/rest.mts`** — `DiscordRest` class; thin `fetch` wrapper for Discord REST API with `Bot` token auth
 - **`src/lib/api.mts`** — `apiGet()` helper for querying the external Nagara RPG web-server
-- **`src/lib/types.mts`** — `Command`, `CommandContext`, `Interaction`, and related interfaces
+- **`src/lib/types.mts`** — `Command`, `CommandContext`, `AutocompleteContext`, `ComponentContext`, `Interaction`, and related interfaces
 - **`src/lib/dice.mts`** — dice parsing and rolling helpers (`parseDice`, `rollDice`, `DiceGroup`, `RollResult`, `Check`, `CheckOperator`, `ParsedExpression`)
+- **`src/lib/data.mts`** — data provider for RPG ability lookup; `searchAbilities(query)` and `getAbility(id)` with local JSON cache
+- **`src/lib/components.mts`** — centralized component interaction registry; `registerComponent(prefix, handler)` and `resolveComponent(customId)`
 - **`src/lib/constants.mts`** — shared constants (Discord API version, base URLs)
-- **`src/commands/`** — one file per command, each exporting a `Command` (data + execute); registered in `index.mts`
-- **`src/events/`** — event handlers dispatched by the gateway; registered in `index.mts`
+- **`src/commands/`** — one file per command, each exporting a `Command` (data + execute + optional autocomplete); registered in `index.mts`
+- **`src/events/`** — event handlers dispatched by the gateway; registered in `index.mts`; handles interaction types 2 (command), 3 (component), and 4 (autocomplete)
+- **`src/format/`** — formatting/presentation functions separated from command logic (e.g. `ability.mts`, `roll.mts`)
+- **`src/data/`** — static data files (e.g. `abilities.lookup.json`)
 
 ## Module Import Aliases
 
 Defined in `package.json` `"imports"`:
 
-| Alias        | Resolves to              |
-| ------------ | ------------------------ |
-| `#commands`  | `src/commands/index.mts` |
-| `#events`    | `src/events/index.mts`   |
-| `#api`       | `src/lib/api.mts`        |
-| `#types`     | `src/lib/types.mts`      |
-| `#gateway`   | `src/lib/gateway.mts`    |
-| `#rest`      | `src/lib/rest.mts`       |
-| `#constants` | `src/lib/constants.mts`  |
-| `#dice`      | `src/lib/dice.mts`       |
+| Alias             | Resolves to              |
+| ----------------- | ------------------------ |
+| `#commands`       | `src/commands/index.mts` |
+| `#events`         | `src/events/index.mts`   |
+| `#api`            | `src/lib/api.mts`        |
+| `#types`          | `src/lib/types.mts`      |
+| `#gateway`        | `src/lib/gateway.mts`    |
+| `#rest`           | `src/lib/rest.mts`       |
+| `#constants`      | `src/lib/constants.mts`  |
+| `#dice`           | `src/lib/dice.mts`       |
+| `#data`           | `src/lib/data.mts`       |
+| `#components`     | `src/lib/components.mts` |
+| `#format/ability` | `src/format/ability.mts` |
+| `#format/roll`    | `src/format/roll.mts`    |
 
 Always use these aliases for cross-module imports rather than relative paths. Add new aliases here as modules are created.
 
 ## Conventions
 
-- Commands follow the `Command` interface from `#types`: a `data` object (matching Discord API slash command schema) and an `execute` function receiving `CommandContext`
+- Commands follow the `Command` interface from `#types`: a `data` object (matching Discord API slash command schema), an `execute` function receiving `CommandContext`, and an optional `autocomplete` function receiving `AutocompleteContext`
 - New commands go in `src/commands/` and must be registered in `src/commands/index.mts`
+- Component interaction handlers (buttons, select menus) are registered via `registerComponent(prefix, handler)` from `#components`; the `custom_id` format is `prefix:param1:param2`
+- Formatting/presentation logic goes in `src/format/`, not in command files
 - Event handlers go in `src/events/`
 - Environment variables are loaded via `--env-file-if-exists` from `config/` — never use `dotenv` or similar packages
 - Do not add npm dependencies unless absolutely necessary
