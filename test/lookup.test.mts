@@ -7,6 +7,7 @@ const lookup = commands.get("lookup")!;
 
 function createMockContext(
   options?: Record<string, string | number | boolean>,
+  locale = "en",
 ): CommandContext {
   const map = new Map<string, string | number | boolean>();
   if (options) {
@@ -14,17 +15,18 @@ function createMockContext(
   }
   return {
     options: map,
-    locale: "en",
+    locale,
     reply: mock.fn(async () => {}),
   } as unknown as CommandContext;
 }
 
 function createMockAutocompleteContext(
   focusedValue: string,
+  locale = "en",
 ): AutocompleteContext {
   return {
     options: new Map(),
-    locale: "en",
+    locale,
     focusedOption: "query",
     focusedValue,
     respond: mock.fn(async () => {}),
@@ -84,6 +86,18 @@ describe("lookup command", () => {
       const acro = choices.find((c) => c.value === "acrobatics");
       assert.ok(acro);
       assert.match(acro.name, /\[.*mobility/);
+    });
+
+    it("returns spell choices for a Russian spell query", async () => {
+      const ctx = createMockAutocompleteContext("Сломить", "ru");
+      await lookup.autocomplete!(ctx);
+
+      const respond = ctx.respond as unknown as ReturnType<typeof mock.fn>;
+      const choices = respond.mock.calls[0]!.arguments[0] as {
+        name: string;
+        value: string;
+      }[];
+      assert.ok(choices.some((c) => c.value === "slomit-volyu"));
     });
   });
 
@@ -151,6 +165,22 @@ describe("lookup command", () => {
       const component = (reply.mock.calls[0]!.arguments[1] as any).components[0]
         .components[0];
       assert.strictEqual(component.custom_id, "lookup:share:acrobatics");
+    });
+
+    it("replies with spell embed when spell found by search", async () => {
+      const ctx = createMockContext({ query: "Сломить" }, "ru");
+      await lookup.execute(ctx);
+
+      const reply = ctx.reply as unknown as ReturnType<typeof mock.fn>;
+      assert.strictEqual(reply.mock.calls.length, 1);
+      const opts = reply.mock.calls[0]!.arguments[1] as any;
+      assert.strictEqual(opts.ephemeral, true);
+      assert.strictEqual(opts.embeds[0].title, "Сломить Волю");
+      assert.match(opts.embeds[0].description, /Свободная воля/);
+      assert.strictEqual(
+        opts.components[0].components[0].custom_id,
+        "lookup:share:slomit-volyu",
+      );
     });
   });
 });

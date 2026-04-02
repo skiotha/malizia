@@ -4,6 +4,11 @@ import { t, type Locale } from "#i18n";
 
 const EMBED_COLOR = 0x5865f2; // Discord blurple
 const AUTOCOMPLETE_MAX = 100;
+const EMBED_DESCRIPTION_MAX = 4096;
+
+function truncate(text: string, max: number): string {
+  return text.length > max ? text.slice(0, max - 3) + "..." : text;
+}
 
 function formatTierField(tier: AbilityTier): string {
   const lines = [tier.description];
@@ -25,7 +30,12 @@ export function formatAbilityEmbed(ability: Ability, locale: Locale): Embed {
 
   return {
     title: ability.name,
-    description: ability.description,
+    description: truncate(
+      ability.details
+        ? `${ability.description}\n\n${ability.details}`
+        : ability.description,
+      EMBED_DESCRIPTION_MAX,
+    ),
     color: EMBED_COLOR,
     fields,
     footer: { text: ability.tags.join(", ") },

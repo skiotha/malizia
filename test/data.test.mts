@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { searchAbilities, getAbility } from "#data";
+import { searchAbilities, getAbility, searchLookups, getLookup } from "#data";
 
 describe("searchAbilities", () => {
   it("returns up to 25 results for an empty query", async () => {
@@ -107,5 +107,27 @@ describe("getAbility", () => {
     assert.ok(ability);
     assert.strictEqual(ability.name, "Акробатика");
     assert.ok(ability.tags.includes("подвижность"));
+  });
+});
+
+describe("searchLookups", () => {
+  it("finds a spell by Russian name prefix", async () => {
+    const results = await searchLookups("Сломить", "ru");
+    assert.ok(results.some((r) => r.id === "slomit-volyu"));
+  });
+
+  it("finds a spell by Russian tag", async () => {
+    const results = await searchLookups("теургия", "ru");
+    assert.ok(results.some((r) => r.id === "levitatsiya"));
+  });
+});
+
+describe("getLookup", () => {
+  it("returns a spell by id", async () => {
+    const spell = await getLookup("slomit-volyu", "ru");
+    assert.ok(spell);
+    assert.strictEqual(spell.category, "spell");
+    assert.strictEqual(spell.name, "Сломить Волю");
+    assert.deepStrictEqual(spell.tags, ["орден", "круг", "колдовство"]);
   });
 });

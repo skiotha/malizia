@@ -1,5 +1,5 @@
 import { OptionType, ButtonStyle, type Command } from "#types";
-import { searchAbilities, getAbility } from "#data";
+import { searchLookups, getLookup } from "#data";
 import { registerComponent } from "#components";
 import { formatAbilityEmbed, formatAbilityChoice } from "#format/ability";
 import { t } from "#i18n";
@@ -26,7 +26,7 @@ export const lookup: Command = {
   },
 
   async autocomplete(ctx) {
-    const results = await searchAbilities(ctx.focusedValue, ctx.locale);
+    const results = await searchLookups(ctx.focusedValue, ctx.locale);
     const choices = results.slice(0, 25).map((a) => ({
       name: formatAbilityChoice(a),
       value: a.id,
@@ -37,18 +37,18 @@ export const lookup: Command = {
   async execute(ctx) {
     const query = ctx.options.get("query") as string;
 
-    // Try as ability ID first (user picked from autocomplete)
-    let ability = await getAbility(query, ctx.locale);
+    // Try as exact ID first (user picked from autocomplete)
+    let entry = await getLookup(query, ctx.locale);
 
     // Fallback: freeform text search
-    if (!ability) {
-      const results = await searchAbilities(query, ctx.locale);
+    if (!entry) {
+      const results = await searchLookups(query, ctx.locale);
       if (results.length > 0) {
-        ability = await getAbility(results[0]!.id, ctx.locale);
+        entry = await getLookup(results[0]!.id, ctx.locale);
       }
     }
 
-    if (!ability) {
+    if (!entry) {
       await ctx.reply(t(ctx.locale, "lookup.notFound", { query }), {
         ephemeral: true,
       });
@@ -57,7 +57,7 @@ export const lookup: Command = {
 
     await ctx.reply("", {
       ephemeral: true,
-      embeds: [formatAbilityEmbed(ability, ctx.locale)],
+      embeds: [formatAbilityEmbed(entry, ctx.locale)],
       components: [
         {
           type: 1,
@@ -66,7 +66,7 @@ export const lookup: Command = {
               type: 2,
               style: ButtonStyle.Secondary,
               label: t(ctx.locale, "lookup.share"),
-              custom_id: `lookup:share:${ability.id}`,
+              custom_id: `lookup:share:${entry.id}`,
             },
           ],
         },
@@ -76,11 +76,11 @@ export const lookup: Command = {
 };
 
 registerComponent("lookup:share", async (ctx) => {
-  const abilityId = ctx.params[0];
-  if (!abilityId) return;
+  const lookupId = ctx.params[0];
+  if (!lookupId) return;
 
-  const ability = await getAbility(abilityId, ctx.locale);
-  if (!ability) {
+  const entry = await getLookup(lookupId, ctx.locale);
+  if (!entry) {
     await ctx.reply(t(ctx.locale, "lookup.abilityNotFound"), {
       ephemeral: true,
     });
@@ -88,6 +88,6 @@ registerComponent("lookup:share", async (ctx) => {
   }
 
   await ctx.reply("", {
-    embeds: [formatAbilityEmbed(ability, ctx.locale)],
+    embeds: [formatAbilityEmbed(entry, ctx.locale)],
   });
 });
