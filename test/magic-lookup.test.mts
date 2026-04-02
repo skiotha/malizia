@@ -1,52 +1,12 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
-
-type Tier = {
-  description: string;
-  effects: Array<{
-    target: string;
-    action: string;
-    value: string | number;
-    description: string;
-  }>;
-};
-
-type MagicEntry = {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-  tags: string[];
-  source: string;
-  tiers: {
-    novice: Tier;
-    adept: Tier;
-    master: Tier;
-  };
-};
+import { readMagicFile } from "./magic-data.mts";
 
 const EXPECTED_SPELL_COUNT = 49;
 
-async function readMagicLookup(): Promise<MagicEntry[]> {
-  const path = new URL("../temp/magic.lookup.json", import.meta.url);
-
-  try {
-    const text = await readFile(path, "utf8");
-
-    try {
-      return JSON.parse(text) as MagicEntry[];
-    } catch (error) {
-      throw new Error(`Failed to parse ${path.pathname}: ${(error as Error).message}`);
-    }
-  } catch (error) {
-    throw new Error(`Failed to read ${path.pathname}: ${(error as Error).message}`);
-  }
-}
-
 describe("magic lookup data", () => {
   it("contains a well-formed entry for each parsed spell", async () => {
-    const data = await readMagicLookup();
+    const data = await readMagicFile("../temp/magic.lookup.json");
 
     assert.strictEqual(data.length, EXPECTED_SPELL_COUNT);
     assert.strictEqual(new Set(data.map((entry) => entry.id)).size, data.length);
@@ -75,7 +35,7 @@ describe("magic lookup data", () => {
   });
 
   it("includes representative spells from each major school grouping", async () => {
-    const data = await readMagicLookup();
+    const data = await readMagicFile("../temp/magic.lookup.json");
     const ids = new Set(data.map((entry) => entry.id));
 
     assert.ok(ids.has("break-will"));

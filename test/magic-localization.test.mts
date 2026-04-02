@@ -1,50 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
-
-type Tier = {
-  description: string;
-  effects: Array<{
-    target: string;
-    action: string;
-    value: string | number;
-    description: string;
-  }>;
-};
-
-type MagicEntry = {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-  tags: string[];
-  source: string;
-  tiers: {
-    novice: Tier;
-    adept: Tier;
-    master: Tier;
-  };
-};
-
-async function readMagicFile(path: string): Promise<MagicEntry[]> {
-  const fileUrl = new URL(path, import.meta.url);
-
-  try {
-    const text = await readFile(fileUrl, "utf8");
-
-    try {
-      return JSON.parse(text) as MagicEntry[];
-    } catch (error) {
-      throw new Error(
-        `Failed to parse ${fileUrl.pathname}: ${(error as Error).message}`,
-      );
-    }
-  } catch (error) {
-    throw new Error(
-      `Failed to read ${fileUrl.pathname}: ${(error as Error).message}`,
-    );
-  }
-}
+import { readMagicFile } from "./magic-data.mts";
 
 describe("localized magic data", () => {
   it("keeps the Russian file aligned with the source while translating tags", async () => {
@@ -71,22 +27,16 @@ describe("localized magic data", () => {
         const sourceTier = source.tiers[tierName];
 
         assert.strictEqual(localizedTier.description, sourceTier.description);
-        assert.strictEqual(
-          localizedTier.effects[0]!.target,
-          sourceTier.effects[0]!.target,
-        );
-        assert.strictEqual(
-          localizedTier.effects[0]!.action,
-          sourceTier.effects[0]!.action,
-        );
-        assert.deepStrictEqual(
-          localizedTier.effects[0]!.value,
-          sourceTier.effects[0]!.value,
-        );
-        assert.strictEqual(
-          localizedTier.effects[0]!.description,
-          sourceTier.effects[0]!.description,
-        );
+        assert.strictEqual(localizedTier.effects.length, sourceTier.effects.length);
+
+        for (const [effectIndex, effect] of localizedTier.effects.entries()) {
+          const sourceEffect = sourceTier.effects[effectIndex]!;
+
+          assert.strictEqual(effect.target, sourceEffect.target);
+          assert.strictEqual(effect.action, sourceEffect.action);
+          assert.strictEqual(effect.value, sourceEffect.value);
+          assert.strictEqual(effect.description, sourceEffect.description);
+        }
       }
     }
   });
@@ -111,20 +61,17 @@ describe("localized magic data", () => {
         const localizedTier = entry.tiers[tierName];
         const sourceTier = source.tiers[tierName];
 
-        assert.strictEqual(
-          localizedTier.effects[0]!.target,
-          sourceTier.effects[0]!.target,
-        );
-        assert.strictEqual(
-          localizedTier.effects[0]!.action,
-          sourceTier.effects[0]!.action,
-        );
-        assert.deepStrictEqual(
-          localizedTier.effects[0]!.value,
-          sourceTier.effects[0]!.value,
-        );
         assert.doesNotMatch(localizedTier.description, /[А-Яа-яЁё]/);
-        assert.doesNotMatch(localizedTier.effects[0]!.description, /[А-Яа-яЁё]/);
+        assert.strictEqual(localizedTier.effects.length, sourceTier.effects.length);
+
+        for (const [effectIndex, effect] of localizedTier.effects.entries()) {
+          const sourceEffect = sourceTier.effects[effectIndex]!;
+
+          assert.strictEqual(effect.target, sourceEffect.target);
+          assert.strictEqual(effect.action, sourceEffect.action);
+          assert.strictEqual(effect.value, sourceEffect.value);
+          assert.doesNotMatch(effect.description, /[А-Яа-яЁё]/);
+        }
       }
     }
   });
