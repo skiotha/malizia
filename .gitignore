@@ -15,4 +15,5 @@ config/*.env
 .vscode-test
 
 temp/*.json
+!temp/magic.lookup.json
 .github/prompts
