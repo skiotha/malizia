@@ -16,4 +16,6 @@ config/*.env
 
 temp/*.json
 !temp/magic.lookup.json
+!temp/magic.ru.json
+!temp/magic.en.json
 .github/prompts
