@@ -31,7 +31,10 @@
     "#format/roll": "./src/format/roll.mts"
   },
   "license": "MIT",
-  "author": "ahani",
+  "author": {
+    "name": "ahani",
+    "email": "skiotha.bl@gmail.com"
+  },
   "type": "module",
   "scripts": {
     "start": "node --env-file-if-exists=config/malizia.env src/index.mts",
