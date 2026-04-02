@@ -26,23 +26,34 @@ type MagicEntry = {
   };
 };
 
+const EXPECTED_SPELL_COUNT = 49;
+
 async function readMagicLookup(): Promise<MagicEntry[]> {
-  const text = await readFile(
-    new URL("../temp/magic.lookup.json", import.meta.url),
-    "utf8",
-  );
-  return JSON.parse(text) as MagicEntry[];
+  const path = new URL("../temp/magic.lookup.json", import.meta.url);
+
+  try {
+    const text = await readFile(path, "utf8");
+
+    try {
+      return JSON.parse(text) as MagicEntry[];
+    } catch (error) {
+      throw new Error(`Failed to parse ${path.pathname}: ${(error as Error).message}`);
+    }
+  } catch (error) {
+    throw new Error(`Failed to read ${path.pathname}: ${(error as Error).message}`);
+  }
 }
 
 describe("magic lookup data", () => {
   it("contains a well-formed entry for each parsed spell", async () => {
     const data = await readMagicLookup();
 
-    assert.strictEqual(data.length, 49);
+    assert.strictEqual(data.length, EXPECTED_SPELL_COUNT);
     assert.strictEqual(new Set(data.map((entry) => entry.id)).size, data.length);
 
     for (const entry of data) {
       assert.ok(entry.id.length > 0);
+      assert.match(entry.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
       assert.ok(entry.name.length > 0);
       assert.strictEqual(entry.category, "magic");
       assert.ok(entry.description.length > 0);
