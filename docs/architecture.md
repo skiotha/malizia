@@ -63,8 +63,17 @@ Manages the WebSocket connection to Discord's Gateway API.
 
 - Connects to `wss://gateway.discord.gg`
 - Handles the heartbeat/identify/resume lifecycle
-- Reconnects automatically on disconnection
+- Maintains a single-socket invariant: recovery paths (invalid session, server
+  reconnect request, zombie detection) close the current socket, and only the
+  close handler schedules reconnects (single-flight)
+- Detects zombied connections via heartbeat-ACK tracking
+- Reconnects with exponential backoff and full jitter (1 s base, 60 s cap),
+  reset after `READY`/`RESUMED`
+- Close-code policy: fatal codes (4004, 4010–4014) exit the process;
+  non-resumable codes (1000, 1001, 4007, 4009) trigger a fresh identify;
+  anything else attempts a resume
 - Emits `dispatch` events consumed by the events layer
+- Accepts an injectable `WebSocket` factory (used by tests)
 
 ### 3.2 REST (`src/lib/rest.mts`)
 
